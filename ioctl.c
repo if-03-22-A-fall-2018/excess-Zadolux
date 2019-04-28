@@ -44,18 +44,25 @@ main(int argc,char *argv[])
 			if(used_lines == lines - 1)
 			{
 				page++;
-				char input;
-
-				printf("\n\n[Page %d] Enter to continue, b + Enter to go back 1 page: ", page);
-				scanf("%c", &input);
+				printf("[Page %d] b to go back 1 page, a to continue: ", page);
+			
+				char input = getchar();
+				// Catches the \n
+				char ignoreBuffer = getchar();
 
 				if(input == 'b')
 				{
-					page--;
+					if(page < 2)
+					{
+						printf("\nOut of range!\n");
+						return 0;
+					}
+
+					page -= 2;
 					used_lines = 0;
 					chars_in_line = 0;
 
-					fseek(fd, (chars * lines) * (-1), SEEK_CUR);
+					fseek(fd, (chars * lines * page), SEEK_SET);
 				}
 				else
 				{
