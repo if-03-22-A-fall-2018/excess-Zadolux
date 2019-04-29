@@ -1,7 +1,3 @@
-// WARNING: Program contains a bug!!
-// 
-// Going back to a previous page doesn't
-// work correctly after page 3.
 // -------------------
 //   WALLINGER Marc
 //   2AHIF (2018/19)
